@@ -114,29 +114,29 @@ namespace cbDevPGAtools.Controllers
 
                     string GameInfo = PGAuploads.WeeksGameInfo(Uname);
 
-                    var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
+                   // var isDuplicate = context.DKT.Any(a => a.Name == GameInfo);
 
-                    if (isDuplicate)
-                    {
-                        ViewBag.Message = "You've already uploaded this tournament";
-                        return View("UploadDKcsv");
-                    }
-                    else
-                    {
-                        foreach (Golfer golfer in theseGolfers)
-                        {
-                            context.GOLFER.Add(golfer);
+                   // if (isDuplicate)
+                   // {
+                   //     ViewBag.Message = "You've already uploaded this tournament";
+                   //     return View("UploadDKcsv");
+                   // }
+                  //  else
+                  //  {
+                     //   foreach (Golfer golfer in theseGolfers)
+                      //  {
+                        //    context.GOLFER.Add(golfer);
 
-                        }
+                       // }
 
-                        DKtourney dkTOURNEY = new DKtourney(theseGolfers)
-                        {
-                            Name = GameInfo,
+                     //   DKtourney dkTOURNEY = new DKtourney(theseGolfers)
+                        //{
+                        //    Name = GameInfo,
 
-                        };
+                        //};
 
-                        context.DKT.Add(dkTOURNEY);
-                        context.SaveChanges();
+                       // context.DKT.Add(dkTOURNEY);
+                       // context.SaveChanges();
 
                         ViewBag.Game = GameInfo;
                         ViewBag.Golfers = theseGolfers;
@@ -144,7 +144,7 @@ namespace cbDevPGAtools.Controllers
                     }
 
 
-                }
+               
 
                 ViewBag.Message = "Upload a file please";
                 return View("UploadDKcsv");
